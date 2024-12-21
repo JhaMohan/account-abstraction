@@ -1,66 +1,37 @@
-## Foundry
+# About
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+1. Create a basic AA on Ethereum
+2. Create a basic AA on zksync
+3. Deploy and send a userOp / transaction through them
 
-Foundry consists of:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
 
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+# to add console2.log in smart contract
+```
+$ import {console2} from "../../../../lib/forge-std/src/console2.sol"
 ```
 
-### Test
+
+# to debug the test in foundry
 
 ```shell
-$ forge test
+$ forge test --debug testEntryPointCanExecuteCommands
 ```
 
-### Format
-
+# To up zksync 
 ```shell
-$ forge fmt
+$ foundryup-zksync 
 ```
 
-### Gas Snapshots
+# ZKSYNC compile
 
 ```shell
-$ forge snapshot
+$ forge build --zksync
 ```
 
-### Anvil
 
+# command to run test
 ```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+$ forge test --mt testValidateTransaction --zksync --system-mode=true
+$ forge test --mt testZkOwnerCanExecuteCommands --zksync --via-ir
 ```
